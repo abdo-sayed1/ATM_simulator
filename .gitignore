@@ -1,0 +1,60 @@
+# Arduino/ESP32 Build Files
+*.hex
+*.elf
+*.bin
+*.map
+*.eep
+*.lss
+*.sym
+*.su
+*.d
+*.o
+*.a
+*.lst
+*.cpp.dep
+*.ino.dep
+
+# Arduino IDE
+.arduino/
+build/
+*.cache
+*.preproc
+*.tmp
+
+# Visual Studio Code / PlatformIO
+.vscode/
+.platformio/
+.pio/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# IDE
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.log
+*.bak
+*.tmp
+
+# Build artifacts
+*.hex
+*.elf
+*.bin
+
