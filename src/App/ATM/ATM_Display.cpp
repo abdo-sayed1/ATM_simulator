@@ -101,7 +101,7 @@ void ATM_Display_PINEntry(void) {
     _lcd->setCursor(0, 0);
     _lcd->print("Enter PIN:");
     _lcd->setCursor(0, 1);
-    _lcd->print("Serial Monitor");
+    _lcd->print("Use Keypad");
 }
 
 void ATM_Display_PINCorrect(void) {
@@ -133,7 +133,7 @@ void ATM_Display_WithdrawPrompt(void) {
     _lcd->setCursor(0, 1);
     _lcd->print("Enter Amount:");
     _lcd->setCursor(0, 2);
-    _lcd->print("Serial Monitor");
+    _lcd->print("Use Keypad");
 }
 
 void ATM_Display_DepositPrompt(void) {
@@ -145,7 +145,7 @@ void ATM_Display_DepositPrompt(void) {
     _lcd->setCursor(0, 1);
     _lcd->print("Enter Amount:");
     _lcd->setCursor(0, 2);
-    _lcd->print("Serial Monitor");
+    _lcd->print("Use Keypad");
 }
 
 void ATM_Display_Processing(void) {

@@ -8,8 +8,8 @@ An ESP32-based ATM simulator using NFC card reading and Nokia 5110 LCD display.
 - **LCD Display**: Nokia 5110 (84x48) LCD for user interface
 - **ATM Operations**: Balance check, Withdraw, Deposit
 - **Card Data Management**: Reads and writes card data (CardID, Balance, Username, PIN)
-- **PIN Authentication**: Secure PIN entry via Serial Monitor
-- **Serial Control**: Menu navigation and input via Serial Monitor
+- **PIN Authentication**: Secure PIN entry via the physical keypad
+- **Keypad Control**: Menu navigation and transaction entry using a 4x4 keypad
 
 ## Hardware Requirements
 
@@ -17,6 +17,8 @@ An ESP32-based ATM simulator using NFC card reading and Nokia 5110 LCD display.
 - Nokia 5110 LCD Display (PCD8544)
 - PN532 NFC Reader Module
 - NTAG NFC Cards
+- 4x4 Matrix Keypad
+- Piezo buzzer
 
 ## Pin Connections
 
@@ -36,10 +38,26 @@ An ESP32-based ATM simulator using NFC card reading and Nokia 5110 LCD display.
 - VCC → 3.3V or 5V
 - GND → GND
 
+### Piezo Buzzer
+- Signal → GPIO 33
+- VCC → 3.3V (through driver/transistor if needed)
+- GND → GND
+
+### 4x4 Keypad
+- ROW0 → GPIO 16
+- ROW1 → GPIO 17
+- ROW2 → GPIO 18
+- ROW3 → GPIO 19
+- COL0 → GPIO 23
+- COL1 → GPIO 5
+- COL2 → GPIO 4
+- COL3 → GPIO 2
+
 ## Software Requirements
 
 - Arduino IDE with ESP32 board support
 - Adafruit_PN532 library (install via Library Manager)
+- Keypad library (by Mark Stanley & Alexander Brevig)
 
 ## Installation
 
@@ -65,11 +83,12 @@ Example:
 ## Usage
 
 1. Power on the ESP32
-2. Open Serial Monitor (115200 baud)
+2. (Optional) Open Serial Monitor at 115200 baud for debug logs
 3. Place NFC card on reader
-4. Enter PIN when prompted
-5. Select menu option (1-4) via Serial Monitor
-6. Follow on-screen instructions
+4. Enter your PIN on the keypad (digits + `A` to confirm, `D` delete, `C` cancel)
+5. Use the keypad to select menu options (press the number, then `A`)
+6. Enter withdrawal/deposit amounts on the keypad (`*` adds a decimal) and confirm with `A`
+7. Follow on-screen instructions and remove the card when prompted
 
 ## Project Structure
 
@@ -90,9 +109,15 @@ ATMSIM/
 │   │   ├── LCD/
 │   │   │   ├── LCD.h        # LCD driver header
 │   │   │   └── LCD.cpp      # LCD driver implementation
-│   │   └── NFC/
-│   │       ├── NFC.h        # NFC driver header
-│   │       └── NFC.cpp      # NFC driver implementation
+│   │   ├── NFC/
+│   │   │   ├── NFC.h        # NFC driver header
+│   │   │   └── NFC.cpp      # NFC driver implementation
+│   │   ├── Buzzer/
+│   │   │   ├── Buzzer.h     # Buzzer HAL
+│   │   │   └── Buzzer.cpp   # Buzzer HAL implementation
+│   │   └── Keypad/
+│   │       ├── KeypadInput.h # Keypad helper
+│   │       └── KeypadInput.cpp
 └── README.md
 ```
 
