@@ -1,1 +1,8 @@
 Testing the code 
+git status 
+git add filename 
+git status >> the filename will change from untracked to to be commited 
+git commit -m "adding a test file 
+git push
+for first time (git push --set-upstream origin <branch name>)
+git pull
