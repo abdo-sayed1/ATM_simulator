@@ -1,0 +1,56 @@
+# Arduino/ESP32 IDE files
+*.tmp
+*.bak
+*.swp
+*~
+
+# Object files
+*.o
+*.obj
+
+# Compiled binaries
+*.elf
+*.bin
+*.hex
+
+# ESP32 specific
+build/
+sdkconfig
+sdkconfig.old
+partitions.bin
+bootloader.bin
+
+# PlatformIO
+.pio/
+.vscode/
+*.pio
+
+# Arduino IDE
+libraries/
+hardware/
+
+# IDE files
+*.cproj
+*.cbp
+*.cproject
+*.project
+*.workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+*.tmp
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.local
+
+# Documentation build
+docs/_build/
+
+# Backup files
+*.orig
+*.rej
